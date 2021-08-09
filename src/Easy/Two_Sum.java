@@ -12,12 +12,15 @@ import java.util.HashMap;
 public class Two_Sum {
 
     public static int[] twoSum(int[] nums, int target) {
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        // this is the map where we will save the differences and the index where we found it
+        HashMap<Integer, Integer> map = new HashMap<>();    //key= target - nums[i]   |   value= index
 
         for (int i = 0; i < nums.length; i++) {
+            // if the map already contains the number as the key, we can return this
             if (map.containsKey(nums[i])) {
-                int left = map.get(nums[i]);
-                return new int[]{left, i};
+                // return the value of nums[i] and current index i
+                return new int[]{map.get(nums[i]), i};
+                // otherwise, we have to put it into the map
             } else {
                 map.put(target - nums[i], i);
             }
